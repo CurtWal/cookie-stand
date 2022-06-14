@@ -95,3 +95,48 @@ tokyo.calcustomersPerHour()
 tokyo.calcookiesPerHour()
 renders(hours); // calling our function
 
+let dubai = {
+  maxCustomers:38,
+  minCustomers:11,
+  avgCookie:3.7,
+  cookiesPerHour: [],
+  customersPerHour: [],
+  totalDailyCookies: 0,
+calcustomersPerHour:  function(){
+  //calculate customers per hour
+  for(let i=0; i < hours.length; i++){
+  this.customersPerHour.push(Math.floor(Math.random(this.minCustomers - this.maxCustomers + 1) * this.minCustomers));
+  }
+  console.log(this.customersPerHour);
+},
+
+calcookiesPerHour: function(){
+  //claculate cookies per hour
+  for(let i=0; i < hours.length; i++){
+   let cookiePerHour= Math.ceil(this.avgCookie * this.customersPerHour[i])
+   this.cookiesPerHour.push(cookiePerHour);
+  }
+  console.log(this.cookiesPerHour);
+},
+}
+// console.log(Math.floor(Math.random(this.minCustomers - this.maxCustomers + 1) * this.minCustomers));
+
+let cookiecontainerss = document.getElementById('cookies-sold-dubai'); // this is where my div container is
+
+ul = document.createElement('ul'); // unordered list
+
+function renDers(hours){
+// rendering the hours
+for(let i=0; i < hours.length; i++){
+  //create a list element
+  let li = document.createElement('li'); //create a li item
+
+  li.textContent = `${hours[i]} : ${dubai.cookiesPerHour[i]} cookies`;
+  //append list to ul
+  ul.append(li);
+}
+cookiecontainerss.append(ul); // adding our ul to our div
+}
+dubai.calcustomersPerHour()
+dubai.calcookiesPerHour()
+renDers(hours); // calling our function
