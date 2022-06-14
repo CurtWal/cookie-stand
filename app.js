@@ -177,7 +177,7 @@ for(let i=0; i < hours.length; i++){
   //create a list element
   let li = document.createElement('li'); //create a li item
 
-  li.textContent = `${hours[i]} : ${dubai.cookiesPerHour[i]} cookies`;
+  li.textContent = `${hours[i]} : ${paris.cookiesPerHour[i]} cookies`;
   //append list to ul
   ul.append(li);
 }
@@ -186,3 +186,49 @@ cookiecontainersss.append(ul); // adding our ul to our div
 paris.calcustomersPerHour()
 paris.calcookiesPerHour()
 rEnders(hours); // calling our function
+
+let lima = {
+  maxCustomers:16,
+  minCustomers:2,
+  avgCookie:4.6,
+  cookiesPerHour: [],
+  customersPerHour: [],
+  totalDailyCookies: 0,
+calcustomersPerHour:  function(){
+  //calculate customers per hour
+  for(let i=0; i < hours.length; i++){
+  this.customersPerHour.push(Math.floor(Math.random(this.minCustomers - this.maxCustomers + 1) * this.minCustomers));
+  }
+  console.log(this.customersPerHour);
+},
+
+calcookiesPerHour: function(){
+  //claculate cookies per hour
+  for(let i=0; i < hours.length; i++){
+   let cookiePerHour= Math.ceil(this.avgCookie * this.customersPerHour[i])
+   this.cookiesPerHour.push(cookiePerHour);
+  }
+  console.log(this.cookiesPerHour);
+},
+}
+// console.log(Math.floor(Math.random(this.minCustomers - this.maxCustomers + 1) * this.minCustomers));
+
+let cookiecontainerssss = document.getElementById('cookies-sold-lima'); // this is where my div container is
+
+ul = document.createElement('ul'); // unordered list
+
+function reNders(hours){
+// rendering the hours
+for(let i=0; i < hours.length; i++){
+  //create a list element
+  let li = document.createElement('li'); //create a li item
+
+  li.textContent = `${hours[i]} : ${lima.cookiesPerHour[i]} cookies`;
+  //append list to ul
+  ul.append(li);
+}
+cookiecontainerssss.append(ul); // adding our ul to our div
+}
+lima.calcustomersPerHour()
+lima.calcookiesPerHour()
+reNders(hours); // calling our function
