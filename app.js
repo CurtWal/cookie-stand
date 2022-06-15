@@ -1,6 +1,6 @@
 'use strict'
 
-const hours = ['7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+const hours = ['7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 
 
 let hourTable = document.getElementById("hour-table");
@@ -13,7 +13,7 @@ let tableRow = document.createElement('tr');//table row element
 function renderHourTable() {
   //go through each name in array
   for (let i = 0; i < hours.length; i++) {
-    //Jordan
+  
     tableHeaderEl = document.createElement('th');
     tableHeaderEl.textContent = `${hours[i]}`;
 
@@ -57,7 +57,7 @@ function city(maxCustomers, minCustomers, avgCookie, cookiesPerHour, customersPe
 
 let Seattle = new city(65, 23, 6.3, [], [])
 
-// this is where my div container is
+// this is where my table container is
 let cookieContaineR = document.getElementById('hour-table'); 
 
 //table element thead
@@ -89,7 +89,7 @@ render(Seattle.totalDailyCookies); // calling our function
 
 let Tokyo = new city(24, 3, 1.2, [], [])
 
-// this is where my div container is
+// this is where my table container is
 cookieContaineR = document.getElementById('hour-table');
 
 //table element thead
@@ -193,9 +193,9 @@ tablerow = document.createElement('tr')
 function rEnDer() {
   // rendering the hours
   for (let i = 0; i < hours.length; i++) {
-    //create a list elemente
+    //create a thead element
     tableheaderEl = document.createElement('th');
-    tableheaderEl.textContent = ` ${Lima.cookiesPerHour[i]}`;
+    tableheaderEl.textContent = `${Lima.cookiesPerHour[i]}`;
 
     tablerow.append(tableheaderEl);// attach table row to table header
     tableheaderContainer.append(tablerow);
