@@ -1,32 +1,78 @@
-body{
-    background-color:lightblue;
-}
-.grey{
+header{
     background-color: grey;
+    height: 100px;
+    font-size: 20px;
     padding: 10px;
     margin: 5px;
     display: flex;
   justify-content: space-evenly;
-  color:white
 }
-
+body{
+    background-color:lightblue;
+}
 .salmon-pic{
     display: flex;
     justify-content: center;
-}
-.place{
-    display: flex;
-    justify-content: space-evenly;
     padding: 10px;
     margin: 5px;
+    
 }
-.Feat{
+.container{
     display: flex;
+    justify-content:space-evenly;
+    align-items: baseline;
+}
+.sub{
+    background-color: orange;
+    padding: 10px;
+    margin: 5px;
+    height: 300px;
+    width: 375px;
+    text-align: center;
+} .sub2{
+    background-color: orange;
+    padding: 10px;
+    margin: 5px;
+    height: 300px;
+    width: 375px;
+    text-align: center;
+} .sub3{
+    background-color: orange;
+    padding: 10px;
+    margin: 5px;
+    height: 300px;
+    width: 375px;
+    text-align: center;
+} 
+.container2{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: baseline;
+}
+.sub4{
+    background-color: orange;
     justify-content: space-evenly;
-align-items: flex-start;
+    display: flex;
+    padding: 10px;
+    margin: 5px;
+    height: 480px;
+    width: 400px;
+}
+.sub5{
+    background-color: orange;
+    justify-content: space-evenly;
+    display: flex;
+    padding: 10px;
+    margin: 5px;
+    height: 480px;
+    width: 400px;
 }
 footer{
     background-color: grey;
-    padding: 35px;
-    margin: 5px;
+}
+.copy{
+    text-align: left;
+}
+.contact{
+    text-align: center;
 }

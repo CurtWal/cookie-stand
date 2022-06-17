@@ -1,115 +1,114 @@
-'use strict'
+'use strict';
 
-const hours = ['7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+// Sourced from MDN Web Docs - Math.random
+const hours = ['6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM'];
 
-
-let hourTable = document.getElementById("hour-table");
-
-let tableHeaderContainer = document.createElement("thead");//table element thead
-
-let tableHeaderEl = document.createElement('th');
-
-let tableRow = document.createElement('tr');//table row element
-
-let tableData = document.createElement('td');
-
-// Contruction function for table box
-function City(maxCustomers, minCustomers, avgCookie) {
-
-  this.maxCustomers = maxCustomers;
-  this.minCustomers = minCustomers;
-  this.avgCookie = avgCookie;
-  this.cookiesPerHour = [];
-  this.customersPerHour = [];
-  this.totalDailyCookies = 0;
-
-  this.render = function (hoursArray) {
-    //go through each name in array
-    for (let i = 0; i < hoursArray.length; i++) {
-      
-      
-
-      
-      tableHeaderEl.textContent = `${hours[i]}`;
-      
-
-      tableRow.append(tableHeaderEl);// attach table row to table header
-      tableHeaderContainer.append(tableRow);
-    }
-    hourTable.append(tableHeaderContainer);//attach header to student table
-  }
-
-  this.calcustomersPerHour = function () {
-
-    //calculate customers per hour
-    for (let i = 0; i < hours.length; i++) {
-      this.customersPerHour.push(Math.floor(Math.random(this.minCustomers - this.maxCustomers + 1) * this.minCustomers));
-    }
-    console.log(this.customersPerHour);
-  },
-
-    this.calcookiesPerHour = function () {
-      //claculate cookies per hour
-      for (let i = 0; i < hours.length; i++) {
-        // get cookies-Per-hour from  the cookies per hour array
-
-        //the cookiePerhour array is equal to avgCookie time the customerPerHour 
-        let cookiePerHour = Math.ceil(this.avgCookie * this.customersPerHour[i]);
-
-        this.totalDailyCookies += cookiePerHour;
-      
-
-
-        tableRow.textContent = `${cookiePerHour} ${this.totalDailyCookies}`;
-
-        
-      
-        tableRow.append(tableHeaderEl);// attach table row to table header
-        tableHeaderContainer.append(tableRow);
-        tableData.append(tableRow);
-
-        this.cookiesPerHour.push(cookiePerHour);
-      }
-      console.log(this.totalDailyCookies);
-      console.log(this.cookiesPerHour);
-      hourTable.append(tableHeaderContainer);
-      
-    }
-    
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
 }
 
-// this is where my table container is
-// hourTable.append();
-
-// a function to call all instance methods 
-
-// array of objects we made
-
-function callInstanceMethods(){
-  let Seattle = new City(65, 23, 6.3,)
-  let Tokyo = new City(24, 3, 1.2,)
-  let Dubai = new City(38, 11, 3.7,)
-  let Paris = new City(38, 20, 2.3,)
-  let Lima = new City(16, 2, 4.6,)
-  
-  let cityArray = [Seattle,Tokyo,Dubai,Paris,Lima];
-
-  for (let i = 0; i < cityArray.length; i++) {
-    const city = cityArray[i];
-    city.calcustomersPerHour()
-    city.calcookiesPerHour()
-    city.render(hours)
-    
-  }
+function Cities(name, minCust, maxCust, avgCookie, openTime, closeTime) {
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.averageCookieSale = avgCookie;
+  this.openTime = openTime;
+  this.closeTime = closeTime;
+  this.hourlyTotal = [];
+  this.dailyTotal = 0;
 }
-callInstanceMethods()
 
-// Tokyo.calcustomersPerHour()
-// Tokyo.calcookiesPerHour()
-// Dubai.calcustomersPerHour()
-// Dubai.calcookiesPerHour()
-// Paris.calcustomersPerHour()
-// Paris.calcookiesPerHour()
-// Lima.calcustomersPerHour()
-// Lima.calcookiesPerHour()// calling our function
+Cities.prototype.calcCookiesPerHour = function () {
+  for (let i = 0; i < 14; i++) {
+    this.hourlyTotal[i] = Math.ceil(getRandomIntInclusive(this.minCust, this.maxCust) * this.averageCookieSale);
+    this.dailyTotal += this.hourlyTotal[i];
+    console.log(this.hourlyTotal[i]);
+  }
+};
 
+Cities.prototype.render = function () {
+  this.calcCookiesPerHour();
+  let tableEl = document.getElementById('hour-table');
+
+  let trElement = document.createElement('tr');
+  tableEl.appendChild(trElement);
+
+  let thElement = document.createElement('th');
+  thElement.textContent = this.name;
+  trElement.appendChild(thElement);
+
+  for (let j = 0; j < this.hourlyTotal.length; j++) {
+    var tdElement = document.createElement('td');
+    tdElement.textContent = this.hourlyTotal[j];
+    trElement.appendChild(tdElement);
+  }
+
+  tdElement = document.createElement('td');
+  tdElement.textContent = this.dailyTotal;
+  trElement.appendChild(tdElement);
+  tableEl.appendChild(trElement);
+};
+
+let seattle = new Cities('Seattle', 23, 65, 6.3, 6, 20);
+let tokyo = new Cities('Tokyo', 3, 24, 1.2, 6, 20);
+let dubai = new Cities('Dubai', 11, 38, 3.7, 6, 20);
+let paris = new Cities('Paris', 20, 38, 2.3, 6, 20);
+let lima = new Cities('Lima', 2, 16, 4.6, 6, 20);
+
+let city = [seattle, tokyo, dubai, paris, lima];
+
+for (let k = 0; k < city.length; k++) {
+  city[k].calcCookiesPerHour();
+}
+
+var tableBody = document.getElementById('hour-table');
+
+function renderheader() {
+  let headerrow = document.createElement('tr');
+  let headerstore = document.createElement('th');
+  headerstore.textContent = 'Cities';
+  headerrow.appendChild(headerstore);
+  tableBody.appendChild(headerrow);
+  for (var i = 0; i < hours.length; i++) {
+    let headerhour = document.createElement('th');
+    headerhour.textContent = hours[i];
+    headerstore.appendChild(headerhour);
+    headerrow.appendChild(headerhour);
+  }
+  let headertotal = document.createElement('th');
+  headertotal.textContent = 'Totals';
+  headerrow.appendChild(headertotal);
+}
+
+renderheader();
+for (let i = 0; i < city.length; i++) {
+  city[i].render();
+}
+
+
+function renderFooter() {
+  let headerrow = document.createElement('tr');
+  tableBody.appendChild(headerrow);
+   tdElement = document.createElement('td');
+
+  tdElement.textContent = 'Daily Total';
+  headerrow.appendChild(tdElement);
+
+  let runningTotal;
+
+  for (let i = 0; i < hours.length; i++) {
+    let tdElement = document.createElement('td');
+    let total = 0;
+    for (let j = 0; j < city.length; j++) {
+      total += city[i].custPerHourArray[j];
+      runningTotal += city[i].custPerHourArray[j];
+    }
+    tdElement.textContent = total;
+    headerrow.appendChild(tdElement);
+
+  }
+  var tdElement = document.createElement('td');
+  tdElement.textContent = runningTotal;
+  headerrow.appendChild(tdElement);
+}
+renderFooter();
