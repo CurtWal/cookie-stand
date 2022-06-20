@@ -3,7 +3,18 @@
 html {
     font-family: sans-serif;
   }
-  
+  body{
+    background-color:lightblue;
+  }
+  header{
+    background-color: burlywood;
+    height: 100px;
+    font-size: 20px;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+  justify-content: space-evenly;
+}
   table {
     border-collapse: collapse;
     border: 2px solid rgb(200,200,200);
@@ -35,3 +46,10 @@ html {
   caption {
     padding: 10px;
   }
+  footer{
+    background-color: burlywood;
+    height: 100px;
+    font-size: 15px;
+    padding: 10px;
+    margin: 5px;
+}

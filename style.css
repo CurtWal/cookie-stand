@@ -1,5 +1,5 @@
 header{
-    background-color: grey;
+    background-color: burlywood;
     height: 100px;
     font-size: 20px;
     padding: 10px;
@@ -23,24 +23,27 @@ body{
     align-items: baseline;
 }
 .sub{
-    background-color: orange;
+    background-color: burlywood;
+    color: #8b0000;
     padding: 10px;
     margin: 5px;
-    height: 300px;
+    height: 330px;
     width: 375px;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 } .sub2{
-    background-color: orange;
+    background-color: burlywood;
     padding: 10px;
     margin: 5px;
-    height: 300px;
+    height: 330px;
     width: 375px;
     text-align: center;
 } .sub3{
-    background-color: orange;
+    background-color: burlywood;
+    color: aquamarine;
     padding: 10px;
     margin: 5px;
-    height: 300px;
+    height: 330px;
     width: 375px;
     text-align: center;
 } 
@@ -50,25 +53,25 @@ body{
     align-items: baseline;
 }
 .sub4{
-    background-color: orange;
-    justify-content: space-evenly;
-    display: flex;
+    background-color: burlywood;
+    text-align: center;
+    color: aqua;
     padding: 10px;
     margin: 5px;
     height: 480px;
     width: 400px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .sub5{
-    background-color: orange;
+    background-color: burlywood;
     justify-content: space-evenly;
-    display: flex;
     padding: 10px;
     margin: 5px;
     height: 480px;
     width: 400px;
 }
 footer{
-    background-color: grey;
+    background-color: burlywood;
 }
 .copy{
     text-align: left;
